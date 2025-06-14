@@ -1,0 +1,217 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global Styling */
+body {
+  font-family: 'Segoe UI', sans-serif;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: background 0.5s, color 0.3s;
+}
+
+:root {
+  --bg-dark: #121212;
+  --bg-light: #f3f3f3;
+  --text-dark: #ffffff;
+  --text-light: #121212;
+  --primary: #6200ea;
+  --hover: #3700b3;
+  --glass-bg: rgba(255, 255, 255, 0.08);
+  --glass-border: rgba(255, 255, 255, 0.2);
+}
+
+[data-theme="dark"] body {
+  background: linear-gradient(135deg, #1e1e1e, #2c2c2c);
+  color: var(--text-dark);
+}
+
+[data-theme="light"] body {
+  background: linear-gradient(135deg, #ffffff, #e3e3e3);
+  color: var(--text-light);
+}
+
+/* Background animation */
+.background {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, #1e1e1e, #3b3b3b, #1e1e1e);
+  background-size: 300% 300%;
+  animation: backgroundShift 15s ease infinite;
+  z-index: -1;
+  top: 0;
+  left: 0;
+}
+
+@keyframes backgroundShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Container */
+.container {
+  padding: 30px;
+  width: 90%;
+  max-width: 420px;
+  border-radius: 20px;
+  backdrop-filter: blur(18px);
+  background-color: var(--glass-bg);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  text-align: center;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+}
+
+.theme-toggle button {
+  background: var(--primary);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.theme-toggle button:hover {
+  background: var(--hover);
+}
+
+/* Inputs & Button */
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+}
+
+input[type="text"] {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: inherit;
+  font-size: 16px;
+  outline: none;
+  transition: 0.3s ease;
+}
+
+input[type="text"]:focus {
+  box-shadow: 0 0 0 2px var(--primary);
+}
+
+button#get-weather-btn {
+  background-color: var(--primary);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 15px;
+  cursor: pointer;
+  transition: transform 0.2s ease, background 0.3s ease;
+}
+
+button#get-weather-btn:hover {
+  background-color: var(--hover);
+  transform: scale(1.05);
+}
+
+/* Weather Info */
+#weather-info {
+  margin-top: 20px;
+  animation: fadeIn 0.5s ease;
+}
+
+.weather-icon {
+  font-size: 50px;
+  margin-top: 10px;
+}
+
+.hidden {
+  display: none;
+}
+
+#error-message {
+  margin-top: 20px;
+  color: #ff5252;
+  font-weight: bold;
+}
+
+.heading {
+  font-size: 26px;
+  margin-bottom: 10px;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.spinner-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px 0;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 6px solid transparent;
+  border-top: 6px solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite, glow 4s ease-in-out infinite;
+  box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+  background: linear-gradient(135deg, #6200ea, #ff4081);
+  background-clip: padding-box;
+  position: relative;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+  }
+  50% {
+    box-shadow: 0 0 20px #ff4081, 0 0 40px #ff4081;
+  }
+}
+.spinner-container {
+  transition: opacity 0.3s ease;
+}
+.spinner-container.hidden {
+  opacity: 0;
+  pointer-events: none;
+}
