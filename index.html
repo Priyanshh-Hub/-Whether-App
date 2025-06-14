@@ -1,44 +1,53 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Weather App</title>
-    <link rel="stylesheet" href="styles.css" />
-  </head>
-  <body>
-    <div class="theme-toggle">
-      <button id="toggle-theme">🌗 Toggle Theme</button>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Funny Weather App</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="theme-toggle">
+    <button id="toggle-theme">🌗 Toggle Theme</button>
+  </div>
+
+  <div class="background"></div>
+
+  <div id="loading" class="spinner-container hidden">
+    <div class="spinner"></div>
+  </div>
+
+  <div class="container glass">
+    <h1 class="heading">🌦 Weather App</h1>
+
+    <div class="input-container">
+      <input type="text" id="city-input" placeholder="Enter city name" />
+      <button id="get-weather-btn">Get Weather</button>
+      <button id="toggle-unit">°C / °F</button>
     </div>
 
-    <div class="background"></div>
-    <div id="loading" class="spinner-container hidden">
-  <div class="spinner"></div>
-</div>
-
-
-
-    <div class="container glass">
-      <h1 class="heading">🌦 Weather App</h1>
-
-      <div class="input-container">
-        <input type="text" id="city-input" placeholder="Enter city name" />
-        <button id="get-weather-btn">Get Weather</button>
-      </div>
-
-      <div id="weather-info" class="hidden">
-        <h2 id="city-name"></h2>
-        <p id="temperature"></p>
-        <p id="description"></p>
-        <p id="local-time"></p>
-        <div id="icon" class="weather-icon"></div>
-      </div>
-
-      <p id="error-message" class="hidden">
-        ❌ City not found. Please try again.
-      </p>
+    <div id="weather-info" class="hidden">
+      <h2 id="city-name"></h2>
+      <p id="temperature"></p>
+      <p id="description"></p>
+      <p id="local-time"></p>
+      <div id="icon" class="weather-icon"></div>
     </div>
 
-    <script src="script.js"></script>
-  </body>
+    <div id="weather-tip" class="weather-tip hidden">
+      <span id="tip-text" ></span>
+    </div>
+
+    <div id="forecast" class="forecast hidden">
+      <h3>5-Day Forecast</h3>
+      <div id="forecast-cards" class="forecast-cards"></div>
+    </div>
+
+    <p id="error-message" class="hidden">
+      ❌ City not found. Please try again.
+    </p>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
